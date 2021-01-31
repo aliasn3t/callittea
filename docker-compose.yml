@@ -1,0 +1,7 @@
+version: "3.9"
+services:
+  callittea:
+    build: .
+    volumes:
+      - ./db.d:/db.d
+      - ./conf.d:/conf.d

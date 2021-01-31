@@ -1,0 +1,63 @@
+{
+    "callittea": {
+        "instance_name": "Dev Updates",
+        "database": {
+            "path": "./db.d/",
+            "name": "database.sqlite"
+        }
+    },
+    "kallithea": {
+        "backend": {
+            "type": "repository",
+            "label": "back-repo",
+            "url": "https://repos.work.domain/hg/backend/app",
+            "api_key": "HH9ES9cGJZa7Snys7qrYTHtwLV3paEtkLvA2s3wk",
+            "jenkins_jobs": [
+                {
+                    "label": "User_1 update Backend",
+                    "user_name": "user_1",
+                    "job_name": "DEV-BackCore-User1"
+                },
+                {
+                    "label": "aliasn3t update Backend",
+                    "user_name": "aliasn3t",
+                    "job_name": "DEV-BackCore-Main"
+                },
+                {
+                    "label": "user_2 update Backend test brench",
+                    "user_name": "user_2",
+                    "job_name": "DEV-BackCore-User2-Test",
+                    "branch": "test/api"
+                },
+                {
+                    "label": "user_2 update Backend release",
+                    "user_name": "user_2",
+                    "job_name": "DEV-BackClient",
+                    "tag": "release"
+                }
+            ]
+        },
+        "frontend": {
+            "type": "repository",
+            "label": "web-root-app",
+            "url": "https://repos.home.domain/hg/frontend/front-root",
+            "api_key": "2SHmvpSkKhU7vFg2MW29cxacTcQREKU9exfYWJ9y",
+            "jenkins_jobs": [
+                {
+                    "label": "aliasn3t update Frontend Root",
+                    "user_name": "aliasn3t",
+                    "job_name": "DEV-FrontRootApp"
+                }
+            ]
+        }  
+    },
+    "telegram": {
+        "bot_key": "123456789:qwertyuiopasdfghjkl-zxcvbnm",
+        "chat_id": "-100000000"
+    },
+    "jenkins": {
+        "user": "user",
+        "password": "paSSw0rD",
+        "url": "http://192.168.1.100:8080"
+    }
+}
