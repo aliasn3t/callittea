@@ -19,7 +19,9 @@ class jenkins(object):
             :param job_name: Название джоба
         '''
 
-        self._logger.info('Starting Jenkins job...')
+        self._logger.info('Starting Jenkins job: {job_name}...'.format(
+            job_name = job_name
+            ))
         worker = jenkins.Jenkins(
             self.url,
             username = self.user,

@@ -194,12 +194,7 @@ class callittea(object):
                 jobs = self._get_kallithea()[table]['jenkins_jobs']
                 for jenkins_job in jobs:
                     if (jenkins_job['user_name'] == user):
-                        self._logger.info('Starting Jenkins job: {label} ({job_name})'.format(
-                            label = jenkins_job['label'],
-                            job_name = jenkins_job['job_name']
-                            ))
-                        
-                        self.jenkins._start_job(job_name = jenkins_job['job_name'])
+                        self.jenkins._start_job(jenkins_job['job_name'])
 
                         # Отправка оповещения в Telegram
                         self.telegram._new_message('Репозиторий {repository}/{label} был обновлен пользователем {user}. Задача обновления {job_name} запущена.\nИзменения:\n{comment}'.format(
