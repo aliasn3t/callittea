@@ -1,7 +1,11 @@
 version: "3.9"
 services:
   callittea:
-    build: .
-    volumes:
-      - ./db.d:/db.d
-      - ./conf.d:/conf.d
+#      build: .
+      image: callittea
+      environment:
+        - 'CONFIG_FILE=./conf.d/main.json'
+        - 'SLEEP_TIME=10'
+      volumes:
+        - './db.d:/app/db.d:z'
+        - './conf.d:/app/conf.d:z'

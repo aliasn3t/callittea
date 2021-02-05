@@ -4,7 +4,10 @@
         "database": {
             "path": "./db.d/",
             "name": "database.sqlite"
-        }
+        },
+        "use_telegram": true,
+        "use_jenkins": true,
+        "use_redmine": true
     },
     "kallithea": {
         "backend": {
@@ -12,6 +15,11 @@
             "label": "back-repo",
             "url": "https://repos.work.domain/hg/backend/app",
             "api_key": "HH9ES9cGJZa7Snys7qrYTHtwLV3paEtkLvA2s3wk",
+            "redmine": [{
+                "user": "admin",
+                "password": "p4ssw0rd",
+                "url": "http://192.168.1.100:8000"
+            }],
             "jenkins_jobs": [
                 {
                     "label": "User_1 update Backend",

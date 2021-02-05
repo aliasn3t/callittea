@@ -27,10 +27,10 @@ class callittea(object):
         self.db, self.db_con = self._db_init()
 
         # Telegram
-        self.telegram = telm.telegram(self._get_telegram())
+        self.telegram = telm.callTelegram(self._get_telegram())
 
         # Jenkins
-        self.jenkins = jenm.jenkins(self._get_jenkins())
+        self.jenkins = jenm.callJenkins(self._get_jenkins())
 
         if self._checking_repositories():
             self._logger.info('Update completed!')
@@ -170,7 +170,10 @@ class callittea(object):
                         api = repositories[repository]['api_key'])
                     feed = self._read_feed(repository, atom_template)
             return True
-        except Exception:
+        except Exception as e:
+            self._logger.error('{error}'.format(
+                error = e
+                ))
             return False
 
 
@@ -197,13 +200,15 @@ class callittea(object):
                         self.jenkins._start_job(jenkins_job['job_name'])
 
                         # Отправка оповещения в Telegram
-                        self.telegram._new_message('Репозиторий {repository}/{label} был обновлен пользователем {user}. Задача обновления {job_name} запущена.\nИзменения:\n{comment}'.format(
+                        self.telegram._new_message('Репозиторий {repository}/{label} был обновлен пользователем {user}. \nИзменения:\n{comment}'.format(
                             repository = table,
                             label = jenkins_job['label'],
                             user = user,
                             job_name = jenkins_job['job_name'],
                             comment = record['title']
                             ))
+
+        return True # временно
 
 
     def _parser(self, data, type = 'user'):

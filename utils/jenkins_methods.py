@@ -1,7 +1,7 @@
 import jenkins
 import logging
 
-class jenkins(object):
+class callJenkins(object):
     ''' Jenkins класс '''
 
     def __init__(self, config = None):

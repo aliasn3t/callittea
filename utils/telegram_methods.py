@@ -1,7 +1,7 @@
 import urllib3
 import logging
 
-class telegram(object):
+class callTelegram(object):
     ''' Telegram класс '''
 
     def __init__(self, config = None):
